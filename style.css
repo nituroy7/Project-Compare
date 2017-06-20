@@ -1,87 +1,119 @@
-    .jumbotron {
-        margin-top: 30px;
-        background-image: url("IMAGE.jpg");
-        color: blue;
-        text-align: center;
-    }
-    
-    .container {
-        margin-top: 20px;
-    }
-    
-    .mb20 {
-        margin-bottom: 20px;
-    }
-    
-    hgroup {
-        padding-left: 15px;
-        border-bottom: 1px solid #ccc;
-    }
-    
-    hgroup h1 {
-        font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
-        color: #2a3644;
-        margin-top: 0;
-        line-height: 1.15;
-    }
-    
-    hgroup h2.lead {
-        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
-        color: #2a3644;
-        margin: 0;
-        padding-bottom: 10px;
-    }
-    
-    .search-result .thumbnail {
-        border-radius: 0 !important;
-    }
-    
-    .search-result:first-child {
-        margin-top: 0 !important;
-    }
-    
-    .search-result {
-        margin-top: 20px;
-    }
-    
-    .search-result .col-md-2 {
-        border-right: 1px dotted #ccc;
-        min-height: 140px;
-    }
-    
-    .search-result ul {
-        padding-left: 0 !important;
-        list-style: none;
-    }
-    
-    .search-result ul li {
-        font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
-        line-height: 30px;
-    }
-    
-    .search-result ul li i {
-        padding-right: 5px;
-    }
-    
-    .search-result .col-md-7 {
-        position: relative;
-    }
-    
-    .search-result h3 {
-        font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
-        margin-top: 0 !important;
-        margin-bottom: 10px !important;
-    }
-    
-    .search-result h3 > a,
-    .search-result i {
-        color: #248dc1 !important;
-    }
-    
-    .search-result p {
-        font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
-    }
-    
-    image {
-        float: left;
-    }
+#header {
+    /*font: 1500 normal 2em "Roboto", Arial, Verdana, sans-serif;*/
+    color: #0212f2;
+    margin-bottom: 50px;
+    margin-top: 10%;
+    margin-left: 13%;
+    font-family: Jazz LET, fantasy;
+    /* font-family: Comic Sans MS, Comic Sans, cursive;*/
+    font-size: 40px;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.mb20 {
+    margin-bottom: 20px;
+}
+
+#item {
+    border: 2px solid blue;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 70%;
+    height: 45px;
+    margin-left: 10px;
+}
+
+button {
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #e3e3e5;
+    color: #bcbcc6;
+    border: 2px solid #e7e7e7;
+    text-align: center;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #f9fafc;
+    color: black;
+}
+
+#searchItem {
+    font-size: 14px;
+    height: 40px;
+    width: 60px;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+hgroup {
+    padding-left: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+hgroup h1 {
+    font: 500 normal 1.625em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin-top: 0;
+    line-height: 1.15;
+}
+
+hgroup h2.lead {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+    color: #2a3644;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.search-result .thumbnail {
+    border-radius: 0 !important;
+}
+
+.search-result:first-child {
+    margin-top: 0 !important;
+}
+
+.search-result {
+    margin-top: 20px;
+}
+
+.search-result .col-md-2 {
+    border-right: 1px dotted #ccc;
+    min-height: 140px;
+    font: 400 normal .85em "Roboto", Arial, Verdana, sans-serif;
+    line-height: 30px;
+    list-style: none;
+}
+
+.search-result h3 > a,
+.search-result i {
+    color: #248dc1 !important;
+}
+
+.search-result .col-md-7 {
+    position: relative;
+}
+
+.search-result h3 {
+    font: 500 normal 1.375em "Roboto", Arial, Verdana, sans-serif;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+.search-result p {
+    font: normal normal 1.125em "Roboto", Arial, Verdana, sans-serif;
+}
+
+.morecontent span {
+    display: none;
+    text-align: justify;
+}
+
+.morelink {
+    display: block;
+    font-size: 16px;
+}

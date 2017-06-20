@@ -15,36 +15,31 @@ $(document).ready(function() {
     var item = "";
     //function to call the you tube video 
     mymodal = function(productName, num) {
-        $.ajax({
-            url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + productName + " review" + "&key=AIzaSyB8g6i8y1SPFbIcJw9flTwk7VEFXYWA5MY",
-            context: document.body
-        }).done(function(response) {
-            $('#dialog').empty();
-            var videoId = response.items[0].id.videoId;
-            var embedCode = "<iframe id='youframe' width=\"100%\" height=\"315\"></iframe>";
-            $('#dialog').append(embedCode);
-            $('#dialog').dialog({
-                autoOpen: false,
-                show: "fade",
-                hide: "fade",
-                modal: true,
-                height: 'auto',
-                width: 'auto',
-                resizable: true,
-                title: productName,
-                open: function(ev, ui) {
-                    $('#youframe').attr('src', 'https://www.youtube.com/embed/' + videoId);
-                }
+            $.ajax({
+                url: "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + productName + " review" + "&key=AIzaSyB8g6i8y1SPFbIcJw9flTwk7VEFXYWA5MY",
+                context: document.body
+            }).done(function(response) {
+                $('#dialog').empty();
+                var videoId = response.items[0].id.videoId;
+                var embedCode = "<iframe id='youframe' width=\"100%\" height=\"315\"></iframe>";
+                $('#dialog').append(embedCode);
+                $('#dialog').dialog({
+                    autoOpen: false,
+                    show: "fade",
+                    hide: "fade",
+                    modal: true,
+                    height: 'auto',
+                    width: 'auto',
+                    resizable: true,
+                    title: productName,
+                    open: function(ev, ui) {
+                        $('#youframe').attr('src', 'https://www.youtube.com/embed/' + videoId);
+                    }
+                });
+                $('#dialog').dialog('open');
             });
-            $('#dialog').dialog('open');
-        });
-    }
-
-    $("#searchItem").on("click", function() {
-        $("#main.container").hide();
-    });
-
-    // Capture Button Click
+        }
+        // Capture Button Click
     $("#searchItem").on("click", function() {
         // Don't refresh the page!
         event.preventDefault();
@@ -54,8 +49,6 @@ $(document).ready(function() {
         database.ref().push({
             item: item
         });
-
-
         var supportsChrome = $.support.cors;
         $.ajax({
             url: 'http://api.walmartlabs.com/v1/search?apiKey=rtvzxw2fgpxvrehtzuazk4g3&query=' + item,
@@ -129,13 +122,13 @@ $(document).ready(function() {
                 var produceDesc = $('<div class="more">').html(response.items[i].shortDescription);
                 descriptionDiv.append(produceDesc);
                 // link for youtube
-                descriptionDiv.append($("<a onclick='mymodal(\"" + (response.items[i].name).replace(/"/g, '\\"') + "," + i + "\")'>").html("<button><h4 class='youtube' id='youtube" + i + " '>Click here for youtube review!</h4></Button>"));
+                descriptionDiv.append($("<a onclick='mymodal(\"" + (response.items[i].name).replace(/"/g, '\\"') + "," + i + "\")'>").html("<button> <h4 class='youtube' id='youtube" + i + " '> youtube review, click here!</h4></button>"));
                 article.append(descriptionDiv);
                 article.appendTo(section);
             }
             section.appendTo($('#searchResultsDiv'));
             // Configure/customize these variables.
-            var showChar = 400; // How many characters are shown by default
+            var showChar = 450; // How many characters are shown by default
             var ellipsestext = "...";
             var moretext = "Show more >";
             var lesstext = "Show less";
