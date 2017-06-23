@@ -1,13 +1,14 @@
 var mymodal;
+let set = new Set();
 $(document).ready(function() {
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyCH63Yd2U-aDYMqiDGlY9amiH3S2KpWPfI",
-        authDomain: "team-project-2d3c2.firebaseapp.com",
-        databaseURL: "https://team-project-2d3c2.firebaseio.com",
-        projectId: "team-project-2d3c2",
-        storageBucket: "",
-        messagingSenderId: "871255246336"
+        apiKey: "AIzaSyBmn9Vp8gvEoCIC6ZBgODqKF4omsE4GN48",
+        authDomain: "compare-prices-17f1d.firebaseapp.com",
+        databaseURL: "https://compare-prices-17f1d.firebaseio.com",
+        projectId: "compare-prices-17f1d",
+        storageBucket: "compare-prices-17f1d.appspot.com",
+        messagingSenderId: "850301622456"
     };
     firebase.initializeApp(config);
     var database = firebase.database();
@@ -39,23 +40,28 @@ $(document).ready(function() {
             $('#dialog').dialog('open');
         });
     }
-
     $("#searchItem").on("click", function() {
         $("#main.container").hide();
     });
+    $("#searchItem").on("click", function() {
+        $("#recent-searches").hide();
+        $("#recent-searches1").hide();
+    });
 
-    // Capture Button Click
+    function updateFirebase(item) {
+        database.ref().push({
+            item: item
+        });
+    }
+    console.log(item)
+        // Capture Button Click
     $("#searchItem").on("click", function() {
         // Don't refresh the page!
         event.preventDefault();
         // Code in the logic for storing and retrieving the most recent user.
         // Don't forget to provide initial data to your Firebase database.
-        item = $("#item").val().trim();
-        database.ref().push({
-            item: item
-        });
-
-
+        item = $("#item").val();
+        updateFirebase(item);
         var supportsChrome = $.support.cors;
         $.ajax({
             url: 'http://api.walmartlabs.com/v1/search?apiKey=rtvzxw2fgpxvrehtzuazk4g3&query=' + item,
@@ -118,12 +124,14 @@ $(document).ready(function() {
                 listDiv.appendTo(article);
                 //creating the product link with short description
                 var descriptionDiv = $('<div>').attr({
-                    class: 'col-xs-12 col-sm-12 col-md-7',
+                    class: 'col-xs-12 col-sm-10 col-md-7',
                     id: 'descriptionDiv' + '_' + i
                 });
                 var productLink = $('<h4>').append($('<a>').html(response.items[i].name).attr({
                     href: response.items[i].productUrl,
-                    title: response.items[i].name
+                    title: response.items[i].name,
+                }).on('click', function() {
+                    updateFirebase(response.items[i].name)
                 }));
                 descriptionDiv.append(productLink);
                 var produceDesc = $('<div class="more">').html(response.items[i].shortDescription);
@@ -139,21 +147,15 @@ $(document).ready(function() {
             var ellipsestext = "...";
             var moretext = "Show more >";
             var lesstext = "Show less";
-
             $('.more').each(function() {
                 var content = $(this).html();
-
                 if (content.length > showChar) {
-
                     var c = content.substr(0, showChar);
                     var h = content.substr(showChar, content.length - showChar);
-
                     var html = c + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-
                     $(this).html(html);
                 }
             });
-
             $(".morelink").click(function() {
                 if ($(this).hasClass("less")) {
                     $(this).removeClass("less");
@@ -167,5 +169,29 @@ $(document).ready(function() {
                 return false;
             });
         });
+    });
+
+    database.ref().on('child_added', function(snapshot) {
+        console.log(snapshot.val());
+        var results = snapshot.val();
+        if (set.has(results.item.toLowerCase()))
+            return;
+        else
+            set.add(results.item.toLowerCase());
+        var recentSearch = $('<div>');
+
+        for (var key in results) {
+            // skip loop if the property is from prototype
+            if (!results.hasOwnProperty(key)) continue;
+            var obj = results[key];
+            for (var prop in obj) {
+                // skip loop if the property is from prototype
+                if (!obj.hasOwnProperty(prop)) continue;
+                var item = $('<div class="searched-item">');
+                item.html(obj);
+                recentSearch.append(item);
+            }
+        }
+        $('#recent-searches').prepend(item);
     });
 });

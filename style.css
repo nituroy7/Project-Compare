@@ -3,15 +3,18 @@
     color: #0212f2;
     margin-bottom: 50px;
     margin-top: 10%;
-    margin-left: 13%;
-    font-family: Jazz LET, fantasy;
-    /* font-family: Comic Sans MS, Comic Sans, cursive;*/
+    margin-left: 11%;
+    font-family: 'Roboto', fantasy;
+    font-weight: 400px;
+    font-weight: bold;
     font-size: 40px;
 }
 
-.container {
+
+/*.container {
     margin-top: 20px;
 }
+*/
 
 .mb20 {
     margin-bottom: 20px;
@@ -46,7 +49,7 @@ button:hover {
     height: 40px;
     width: 60px;
     text-align: center;
-    margin-left: 40px;
+    margin-left: 35 px;
     margin-top: 10px;
 }
 
@@ -116,4 +119,8 @@ hgroup h2.lead {
 .morelink {
     display: block;
     font-size: 16px;
+}
+
+.searched-item {
+    padding-left: 40px;
 }

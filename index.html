@@ -10,6 +10,7 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
         <!-- <h2 id="header"><img src="images/walmartS.jpg" style="width:250px;height:250px;">Product - <img src="images/youtube-logo.png" style="width:120px; height:120px;"> Review </h2> -->
         <h2 id="header"><img src="images/Walmart-Logo.png" style="width:100px;height:100px;"> Walmart Product <img src="images/y.png" style="width:80px; height:80px;">  Youtube Review </h2>
     </div>
-    <div class="row">
+    <div class="row" style="clear: both;">
         <form role="form">
             <div class="col-md-8 col-md-offset-3">
                 <div class="input-append">
@@ -27,23 +28,20 @@
             </div>
         </form>
     </div>
-    <div id="searchResultsDiv"></div>
-    <div id="dialog" hidden="hidden"></div>
-    <div class="row" hidden="hidden">
-        <ul class="pagination">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
+    <div class="row" style="width: 100%">
+        <div id="searchResultsDiv"></div>
     </div>
+    <div class="row">
+        <div id="recent-searches1" class="well pull-right">
+            <h4>Recent Searches</div>
+    </div>
+    <div class="row">
+        <div id="recent-searches" class="well pull-right"></div>
+    </div>
+    <div class="row" id="dialog" hidden="hidden"></div>
     <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="app.js "></script>
 </body>
-
 </html>
