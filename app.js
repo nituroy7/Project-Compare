@@ -53,8 +53,8 @@ $(document).ready(function() {
             item: item
         });
     }
-    console.log(item)
-        // Capture Button Click
+
+    // Capture Button Click
     $("#searchItem").on("click", function() {
         // Don't refresh the page!
         event.preventDefault();
@@ -87,9 +87,11 @@ $(document).ready(function() {
                 .append(' results were found for the search: ')
                 .append('<strong class = \'text-danger\'>' + item + '</ strong>');
             hgroup.append($('<h2>').attr({ class: 'lead' }).append(searchCount));
+
             //appending the search result header tag to the hqroup.
             $('#searchResultsDiv').empty();
             $('#searchResultsDiv').append(hgroup);
+
             // this will clear the search results for every new search
             $('section').empty();
             var section = $('<section>').attr({
@@ -100,6 +102,7 @@ $(document).ready(function() {
                 var article = $('<article>').attr({
                     class: 'search-result row'
                 });
+
                 //creating images
                 var imageLink = $('<a>').attr({
                     href: response.items[i].productUrl,
@@ -112,6 +115,7 @@ $(document).ready(function() {
                     class: 'col-xs-12 col-sm-12 col-md-3'
                 }).append(imageLink);
                 article.append(imageDiv);
+
                 //creating the listDiv to hold the price, ratings
                 var listDiv = $('<div>').attr({
                     class: "col-xs-12 col-sm-12 col-md-2"
@@ -122,6 +126,7 @@ $(document).ready(function() {
                 $('<img>').attr({ src: response.items[i].customerRatingImage }).appendTo(listDiv);
                 $('<p>').html("Reviews: " + response.items[i].numReviews).appendTo(listDiv);
                 listDiv.appendTo(article);
+
                 //creating the product link with short description
                 var descriptionDiv = $('<div>').attr({
                     class: 'col-xs-12 col-sm-10 col-md-7',
@@ -133,6 +138,7 @@ $(document).ready(function() {
                 }).on('click', function() {
                     updateFirebase(response.items[i].name)
                 }));
+
                 descriptionDiv.append(productLink);
                 var produceDesc = $('<div class="more">').html(response.items[i].shortDescription);
                 descriptionDiv.append(produceDesc);
@@ -141,8 +147,11 @@ $(document).ready(function() {
                 article.append(descriptionDiv);
                 article.appendTo(section);
             }
+
             section.appendTo($('#searchResultsDiv'));
+
             // Configure/customize these variables.
+            // User will have the option to see more or less content
             var showChar = 400; // How many characters are shown by default
             var ellipsestext = "...";
             var moretext = "Show more >";
@@ -170,9 +179,9 @@ $(document).ready(function() {
             });
         });
     });
-
+    // to display searched item in the page as "Recent Searches"
     database.ref().on('child_added', function(snapshot) {
-        console.log(snapshot.val());
+
         var results = snapshot.val();
         if (set.has(results.item.toLowerCase()))
             return;
