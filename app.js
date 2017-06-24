@@ -64,7 +64,7 @@ $(document).ready(function() {
         updateFirebase(item);
         var supportsChrome = $.support.cors;
         $.ajax({
-            url: 'http://api.walmartlabs.com/v1/search?apiKey=rtvzxw2fgpxvrehtzuazk4g3&query=' + item,
+            url: 'https://api.walmartlabs.com/v1/search?apiKey=rtvzxw2fgpxvrehtzuazk4g3&query=' + item,
             method: "GET",
             contentType: 'text/plain',
             crossDomain: true,
